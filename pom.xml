@@ -35,7 +35,8 @@
         <module>nifi-salesforce</module>
         <module>nifi-sql</module>
         <module>nifi-addon-services</module>
-    </modules>
+        <module>nifi-tesseract</module>
+  </modules>
 
     <dependencyManagement>
         <dependencies>
