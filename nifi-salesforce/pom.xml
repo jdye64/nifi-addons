@@ -18,23 +18,17 @@
 
     <parent>
         <groupId>com.jeremydyer</groupId>
-        <artifactId>nifi-file</artifactId>
+        <artifactId>nifi-addons</artifactId>
         <version>0.5.1</version>
     </parent>
 
-    <artifactId>nifi-file-nar</artifactId>
-    <packaging>nar</packaging>
-    <properties>
-        <maven.javadoc.skip>true</maven.javadoc.skip>
-        <source.skip>true</source.skip>
-    </properties>
+    <groupId>com.jeremydyer</groupId>
+    <artifactId>nifi-salesforce</artifactId>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.jeremydyer</groupId>
-            <artifactId>nifi-file-processors</artifactId>
-            <version>0.5.1</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>nifi-salesforce-processors</module>
+        <module>nifi-salesforce-nar</module>
+    </modules>
 
 </project>

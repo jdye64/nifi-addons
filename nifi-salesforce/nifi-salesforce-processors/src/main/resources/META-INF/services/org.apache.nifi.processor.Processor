@@ -12,5 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-com.jeremydyer.processors.file.DeleteFile
-com.jeremydyer.processors.file.PutContent
+com.jeremydyer.processors.salesforce.GenerateSOQL
+com.jeremydyer.processors.salesforce.GeneratePhoenixUpsert
+com.jeremydyer.processors.salesforce.GeneratePhoenixCreateTable
+com.jeremydyer.processors.salesforce.SalesforceStreamingTopicAPI

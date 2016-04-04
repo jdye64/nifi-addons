@@ -17,14 +17,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.nifi</groupId>
-        <artifactId>nifi-nar-bundles</artifactId>
+        <groupId>com.jeremydyer</groupId>
+        <artifactId>nifi-addons</artifactId>
         <version>0.5.1</version>
     </parent>
 
     <groupId>com.jeremydyer</groupId>
     <artifactId>nifi-file</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>

@@ -1,1 +1,3 @@
 *NiFi Addons
+
+~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/bin/nifi.sh stop && mvn clean install package && cp ./nifi-file/nifi-file-nar/target/nifi-file-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-salesforce/nifi-salesforce-nar/target/nifi-salesforce-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-addon-services/nifi-salesforce-service/nifi-salesforce.service-api-nar/target/nifi-salesforce.service-api-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-addon-services/nifi-salesforce-service/nifi-salesforce.service-nar/target/nifi-salesforce.service-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/bin/nifi.sh start
