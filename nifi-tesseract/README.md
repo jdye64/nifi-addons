@@ -12,4 +12,4 @@ The "TesseractOCR" processor expects an image in any format be present in the in
 screenshot has been included below. An example template can be found in 
 ```$NIFI_TESSERACT_HOME/templates/Tesseract_QuickBrownFox_*.xml```
 
-![NiFiTesseractScreenshot](/assets/Tesseract_QuickBrownFox_Screenshot.png?raw=true "NiFi Tesseract Screenshot")
+![NiFiTesseractScreenshot](/nifi-tesseract/assets/Tesseract_QuickBrownFox_Screenshot.png?raw=true "NiFi Tesseract Screenshot")
