@@ -9,7 +9,9 @@ be able to start NiFi as usual and use the "TesseractOCR" processor.
 
 ## Sample Template
 The "TesseractOCR" processor expects an image in any format be present in the incoming FlowFiles content. A sample workflow
-screenshot has been included below. An example template can be found in 
-```$NIFI_TESSERACT_HOME/templates/Tesseract_QuickBrownFox_*.xml```
+screenshot has been included below.
 
 ![NiFiTesseractScreenshot](/nifi-tesseract/assets/Tesseract_QuickBrownFox_Screenshot.png)
+
+
+An example template can be found in ```$NIFI_TESSERACT_HOME/templates/Tesseract_QuickBrownFox_*.xml```
