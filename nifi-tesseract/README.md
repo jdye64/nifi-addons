@@ -15,3 +15,6 @@ screenshot has been included below.
 
 
 An example template can be found in ```$NIFI_TESSERACT_HOME/templates/Tesseract_QuickBrownFox_*.xml```
+
+## Docker
+This project Docker Image is available in DockerHub and can be ran using ```docker run -d -p 8080:8080 jdye64/nifi-tesseract:1.5``` at this point the NiFi instance can be accessed by navigating your browser to http://{YOUR_DOCKER_INSTANCE_IP}:8080
