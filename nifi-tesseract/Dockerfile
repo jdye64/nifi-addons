@@ -15,18 +15,21 @@ EXPOSE 8080
 # Install Java
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && apt-get install -y software-properties-common && add-apt-repository ppa:webupd8team/java -y && apt-get update && apt-get install -y oracle-java8-installer && apt-get install -y oracle-java8-set-default
 
-# Install Git
-RUN apt-get install -y git
-
 # Install Maven
-RUN wget http://mirror.sdunix.com/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && tar -zxf apache-maven-3.3.9-bin.tar.gz && cp -R apache-maven-3.3.9 /usr/local && ln -s /usr/local/apache-maven-3.3.9/bin/mvn /usr/bin/mvn && mvn -version
+ADD apache-maven-3.3.9-bin.tar.gz /
+RUN cp -R apache-maven-3.3.9 /usr/local
+RUN ln -s /usr/local/apache-maven-3.3.9/bin/mvn /usr/bin/mvn 
+RUN mvn -version
 
-# Checkout the Jeremy Dyer nifi-addons
-RUN git clone https://github.com/jdye64/nifi-addons.git && cd nifi-addons/nifi-tesseract && mvn clean install package -DskipTests && cp ./nifi-tesseract-nar/target/nifi-tesseract-nar-0.5.1.nar /HDF-1.2.0.0/nifi/lib/.
+# Add the processor code to the image
+RUN mkdir nifi-tesseract
+ADD . /nifi-tesseract
+RUN cd nifi-tesseract && mvn clean install package  -DskipTests && cp ./nifi-tesseract-nar/target/nifi-tesseract-nar-0.5.1.nar /HDF-1.2.0.0/nifi/lib/.
 
 # Add the QuickBrownFox image to the Docker image
 RUN mkdir /images
 ADD nifi-tesseract-processors/src/test/resources/images/QuickBrownFox.jpg /images
+ADD nifi-tesseract-processors/src/test/resources/images/tesseract-test.jpg /images
 
 # Startup NiFi
 CMD /HDF-1.2.0.0/nifi/bin/nifi.sh run

@@ -17,6 +17,7 @@
 package com.jeremydyer.processors.tesseract;
 
 import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.Tesseract1;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.flowfile.FlowFile;
@@ -44,7 +45,7 @@ public class TesseractOCR extends AbstractProcessor {
             .description("Base location on the local filesystem where Tesseract is installed")
             .required(true)
             .expressionLanguageSupported(true)
-            .defaultValue("/usr/bin/tesseract")
+            .defaultValue("/usr/share/tesseract-ocr/tessdata/")
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
 
@@ -99,7 +100,7 @@ public class TesseractOCR extends AbstractProcessor {
         FlowFile ff = session.write(flowFile, new StreamCallback() {
             @Override
             public void process(InputStream inputStream, OutputStream outputStream) throws IOException {
-                ITesseract instance = new Tesseract1();
+                ITesseract instance = new Tesseract();
                 instance.setLanguage(DEFAULT_LANG);
                 instance.setDatapath(context.getProperty(TESSERACT_INSTALL_DIR).evaluateAttributeExpressions(flowFile).getValue());
                 instance.setPageSegMode(Integer.parseInt(DEFAULT_PAGE_SEG_MODE));
