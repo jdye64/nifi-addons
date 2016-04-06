@@ -23,7 +23,7 @@
     </parent>
 
     <artifactId>nifi-opencv-nar</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.5.1</version>
     <packaging>nar</packaging>
 
     <dependencies>
