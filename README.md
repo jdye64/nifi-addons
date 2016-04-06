@@ -26,7 +26,7 @@ save yourself the time of building it all out on your own. The Docker images are
 commands below.
 
 | NiFi Version        | HDF Version           | Docker Command  |
-| "-------------: |:-------------:| :-----:|
+| :-------------: |:-------------:| :-----:|
 | 0.5.1 | HDF 1.1 | ```docker run -d -p 8080:8080 jdye64/nifi-addons:0.5.1-latest``` |
 
 ## Dev Notes
