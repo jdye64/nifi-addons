@@ -28,9 +28,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jeremydyer.nifi</groupId>
+            <groupId>com.jeremydyer</groupId>
             <artifactId>nifi-opencv-processors</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>0.5.1</version>
         </dependency>
     </dependencies>
 
