@@ -12,5 +12,8 @@ ultimate data in motion tool focus has (wisely) be centered around creating proc
   require system dependencies that can make install and running a little daunting for certain users. This repository
   aims to alleviate those issues by providing pre-baked Dockerfile(s) (and public Docker Images) that allow users to quickly
   use those features without the need for a more complex setup. That in a nutshell is the motivation for this repository.
+  
+## Docker
+
 
 ```~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/bin/nifi.sh stop && mvn clean install package && cp ./nifi-file/nifi-file-nar/target/nifi-file-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-salesforce/nifi-salesforce-nar/target/nifi-salesforce-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-addon-services/nifi-salesforce-service/nifi-salesforce.service-api-nar/target/nifi-salesforce.service-api-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-addon-services/nifi-salesforce-service/nifi-salesforce.service-nar/target/nifi-salesforce.service-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/bin/nifi.sh start```

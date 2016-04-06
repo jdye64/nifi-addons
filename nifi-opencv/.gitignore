@@ -1,0 +1,5 @@
+target
+nifi-opencv-processors/target
+nifi-opencv-nar/target
+.idea
+*.iml
