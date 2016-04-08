@@ -39,15 +39,24 @@ RUN cp -R apache-maven-3.3.9 /usr/local
 RUN ln -s /usr/local/apache-maven-3.3.9/bin/mvn /usr/bin/mvn 
 RUN mvn -version
 
+# Spinx - Add the processor code to the image
+RUN mkdir nifi-spinx
+ADD . /nifi-spinx
+RUN cd nifi-spinx && mvn clean install package -DskipTests && cp ./nifi-spinx-nar/target/nifi-spinx-nar-0.5.1.nar /HDF-1.2.0.0/nifi/lib/.
+
+# Add the test Audio file
+RUN mkdir /audio
+RUN cp /nifi-spinx/nifi-spinx-processors/src/test/resources/audio/test.wav /audio/test.wav
+
 # OpenCV - Add the processor code to the image
 RUN mkdir nifi-opencv
 ADD . /nifi-opencv
-RUN cd nifi-opencv && mvn clean install package  -DskipTests && cp ./nifi-opencv-nar/target/nifi-opencv-nar-0.5.1.nar /HDF-1.2.0.0/nifi/lib/.
+RUN cd nifi-opencv && mvn clean install package -DskipTests && cp ./nifi-opencv-nar/target/nifi-opencv-nar-0.5.1.nar /HDF-1.2.0.0/nifi/lib/.
 
 # Tesseract - Add the processor code to the image
 RUN mkdir nifi-tesseract
 ADD . /nifi-tesseract
-RUN cd nifi-tesseract && mvn clean install package  -DskipTests && cp ./nifi-tesseract-nar/target/nifi-tesseract-nar-0.5.1.nar /HDF-1.2.0.0/nifi/lib/.
+RUN cd nifi-tesseract && mvn clean install package -DskipTests && cp ./nifi-tesseract-nar/target/nifi-tesseract-nar-0.5.1.nar /HDF-1.2.0.0/nifi/lib/.
 
 # Add the QuickBrownFox image to the Docker image
 RUN mkdir /images
