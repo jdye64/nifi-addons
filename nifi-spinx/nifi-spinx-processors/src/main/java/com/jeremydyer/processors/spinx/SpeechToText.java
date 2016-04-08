@@ -37,6 +37,7 @@ import org.apache.nifi.processor.util.StandardValidators;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Tags({"spinx", "speech", "text"})
 @CapabilityDescription("Processor for ")
@@ -108,9 +109,10 @@ public class SpeechToText extends AbstractProcessor {
     }
 
     private final Configuration configuration = new Configuration();
+    private final AtomicReference<StreamSpeechRecognizer> speechRecognizer = new AtomicReference<>();
 
     @OnScheduled
-    public void onScheduled(final ProcessContext context) {
+    public void onScheduled(final ProcessContext context) throws IOException {
 //        configuration
 //                .setAcousticModelPath(context.getProperty(ACOUSTIC_MODEL_PATH).getValue());
 //        configuration
@@ -124,6 +126,8 @@ public class SpeechToText extends AbstractProcessor {
                 .setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
         configuration
                 .setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
+
+        speechRecognizer.set(new StreamSpeechRecognizer(configuration));
     }
 
     @Override
@@ -139,8 +143,10 @@ public class SpeechToText extends AbstractProcessor {
                 public void process(InputStream inputStream, OutputStream outputStream) throws IOException {
 
                     getLogger().debug("Beginning SpeechToText");
+                    System.out.println("Starting");
+                    long start = System.currentTimeMillis();
 
-                    StreamSpeechRecognizer recognizer = new StreamSpeechRecognizer(configuration);
+                    StreamSpeechRecognizer recognizer = speechRecognizer.get();
                     recognizer.startRecognition(inputStream);
                     SpeechResult result;
 
@@ -149,6 +155,7 @@ public class SpeechToText extends AbstractProcessor {
                     while ((result = recognizer.getResult()) != null) {
                         getLogger().info("Hypothesis: " + result.getHypothesis());
                         buffer.append(result.getHypothesis());
+                        buffer.append(" ");
                     }
                     recognizer.stopRecognition();
 
@@ -156,6 +163,8 @@ public class SpeechToText extends AbstractProcessor {
 
                     //Writes the output out
                     outputStream.write(buffer.toString().getBytes());
+
+                    System.out.println("Processing took: " + (System.currentTimeMillis() - start) + "ms");
                 }
             });
 
