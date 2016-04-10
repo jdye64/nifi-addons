@@ -33,7 +33,7 @@
     <modules>
         <module>nifi-file</module>
         <module>nifi-salesforce</module>
-        <module>nifi-addon-services</module>
+        <!--<module>nifi-addon-services</module>-->
         <module>nifi-tesseract</module>
         <module>nifi-opencv</module>
     <module>nifi-spinx</module>
