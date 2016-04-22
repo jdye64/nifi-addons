@@ -36,7 +36,8 @@
         <!--<module>nifi-addon-services</module>-->
         <module>nifi-tesseract</module>
         <module>nifi-opencv</module>
-    <module>nifi-spinx</module>
+        <module>nifi-spinx</module>
+        <module>nifi-docker-bundle</module>
   </modules>
 
     <dependencyManagement>
