@@ -38,6 +38,7 @@
         <module>nifi-opencv</module>
         <module>nifi-spinx</module>
         <module>nifi-docker-bundle</module>
+        <module>nifi-jmx</module>
   </modules>
 
     <dependencyManagement>
