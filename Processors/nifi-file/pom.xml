@@ -17,12 +17,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jeremydyer</groupId>
+        <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-addons</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.1</version>
     </parent>
 
-    <groupId>com.jeremydyer</groupId>
+    <groupId>com.jeremydyer.nifi</groupId>
     <artifactId>nifi-file</artifactId>
     <packaging>pom</packaging>
 

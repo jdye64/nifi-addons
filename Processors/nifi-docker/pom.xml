@@ -17,20 +17,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.nifi</groupId>
-        <artifactId>nifi-nar-bundles</artifactId>
-        <version>0.6.0</version>
+        <groupId>com.jeremydyer.nifi</groupId>
+        <artifactId>nifi-addons</artifactId>
+        <version>0.6.1</version>
     </parent>
 
-    <groupId>org.apache.nifi</groupId>
-    <artifactId>nifi-websockets-bundle</artifactId>
-    <version>0.6.0</version>
+    <groupId>com.jeremydyer.nifi</groupId>
+    <artifactId>nifi-docker</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>nifi-websockets-processors</module>
-        <module>nifi-websockets-nar</module>
-        <module>WebSocketServer</module>
+        <module>nifi-docker-processors</module>
+        <module>nifi-docker-nar</module>
     </modules>
 
 </project>

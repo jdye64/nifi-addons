@@ -18,15 +18,11 @@ package com.jeremydyer.nifi;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.nifi.annotation.behavior.ReadsAttribute;
@@ -45,20 +41,11 @@ import org.apache.nifi.processor.ProcessorInitializationContext;
 import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.exception.ProcessException;
 import org.apache.nifi.processor.io.InputStreamCallback;
-import org.apache.nifi.processor.io.OutputStreamCallback;
 import org.apache.nifi.processor.util.StandardValidators;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
-import org.opencv.core.MatOfRect;
-import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.objdetect.CascadeClassifier;
 
 @Tags({"opencv, object detection"})
 @CapabilityDescription("Detects objects from the input images based on the configured OpenCV CascadeClassifier loaded." +
@@ -182,63 +169,63 @@ public class FaceDetectionProcessor extends AbstractProcessor {
 
     final public void detectFaces(final ProcessSession session, ProcessContext context, FlowFile original, final Mat image) {
 
-        CascadeClassifier faceDetector = new CascadeClassifier(context.getProperty(FACE_CLASSIFIER).getValue());
-        CascadeClassifier leftEyeDetector = new CascadeClassifier(context.getProperty(LEFT_EYE_CLASSIFIER).getValue());
-        CascadeClassifier rightEyeDetector = new CascadeClassifier(context.getProperty(RIGHT_EYE_CLASSIFIER).getValue());
-
-        MatOfRect objectDetections = new MatOfRect();
-        faceDetector.detectMultiScale(image, objectDetections);
-
-        for (int i = 0; i < objectDetections.toArray().length; i++) {
-
-        }
-
-
-        final AtomicReference<Mat> croppedImageReference = new AtomicReference<>();
-
-        final Rect rect = objectDetections.toArray()[i];
-        FlowFile detection = session.write(session.create(original), new OutputStreamCallback() {
-            @Override
-            public void process(OutputStream outputStream) throws IOException {
-
-                Mat croppedImage = null;
-
-                //Should the image be cropped? If so there is no need to draw bounds because that would be the same as the cropping
-                if (dd.getBoolean("crop")) {
-                    Rect rectCrop = new Rect(rect.x, rect.y, rect.width, rect.height);
-                    croppedImage = new Mat(image, rectCrop);
-                    MatOfByte updatedImage = new MatOfByte();
-                    Imgcodecs.imencode(".jpg", croppedImage, updatedImage);
-                    croppedImageReference.set(croppedImage);
-                    outputStream.write(updatedImage.toArray());
-                } else {
-                    //Should the image have a border drawn around it?
-                    if (dd.getBoolean("drawBounds")) {
-                        Mat imageWithBorder = image.clone();
-                        Imgproc.rectangle(imageWithBorder, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(255, 255, 255));
-                        MatOfByte updatedImage = new MatOfByte();
-                        Imgcodecs.imencode(".jpg", imageWithBorder, updatedImage);
-                        outputStream.write(updatedImage.toArray());
-                    } else {
-                        MatOfByte updatedImage = new MatOfByte();
-                        Imgcodecs.imencode(".jpg", image, updatedImage);
-                        outputStream.write(updatedImage.toArray());
-                    }
-                }
-
-            }
-        });
-
-        Map<String, String> atts = new HashMap<>();
-        atts.put("object.detection.x", new Long(rect.x).toString());
-        atts.put("object.detection.y", new Long(rect.y).toString());
-        atts.put("object.detection.width", new Long(rect.width).toString());
-        atts.put("object.detection.height", new Long(rect.height).toString());
-        atts.put("image.width", new Double(image.size().width).toString());
-        atts.put("image.height", new Double(image.size().height).toString());
-
-        detection = session.putAllAttributes(detection, atts);
-        session.transfer(detection, REL_OBJECT_DETECTED);
+//        CascadeClassifier faceDetector = new CascadeClassifier(context.getProperty(FACE_CLASSIFIER).getValue());
+//        CascadeClassifier leftEyeDetector = new CascadeClassifier(context.getProperty(LEFT_EYE_CLASSIFIER).getValue());
+//        CascadeClassifier rightEyeDetector = new CascadeClassifier(context.getProperty(RIGHT_EYE_CLASSIFIER).getValue());
+//
+//        MatOfRect objectDetections = new MatOfRect();
+//        faceDetector.detectMultiScale(image, objectDetections);
+//
+//        for (int i = 0; i < objectDetections.toArray().length; i++) {
+//
+//        }
+//
+//
+//        final AtomicReference<Mat> croppedImageReference = new AtomicReference<>();
+//
+//        final Rect rect = objectDetections.toArray()[i];
+//        FlowFile detection = session.write(session.create(original), new OutputStreamCallback() {
+//            @Override
+//            public void process(OutputStream outputStream) throws IOException {
+//
+//                Mat croppedImage = null;
+//
+//                //Should the image be cropped? If so there is no need to draw bounds because that would be the same as the cropping
+//                if (dd.getBoolean("crop")) {
+//                    Rect rectCrop = new Rect(rect.x, rect.y, rect.width, rect.height);
+//                    croppedImage = new Mat(image, rectCrop);
+//                    MatOfByte updatedImage = new MatOfByte();
+//                    Imgcodecs.imencode(".jpg", croppedImage, updatedImage);
+//                    croppedImageReference.set(croppedImage);
+//                    outputStream.write(updatedImage.toArray());
+//                } else {
+//                    //Should the image have a border drawn around it?
+//                    if (dd.getBoolean("drawBounds")) {
+//                        Mat imageWithBorder = image.clone();
+//                        Imgproc.rectangle(imageWithBorder, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(255, 255, 255));
+//                        MatOfByte updatedImage = new MatOfByte();
+//                        Imgcodecs.imencode(".jpg", imageWithBorder, updatedImage);
+//                        outputStream.write(updatedImage.toArray());
+//                    } else {
+//                        MatOfByte updatedImage = new MatOfByte();
+//                        Imgcodecs.imencode(".jpg", image, updatedImage);
+//                        outputStream.write(updatedImage.toArray());
+//                    }
+//                }
+//
+//            }
+//        });
+//
+//        Map<String, String> atts = new HashMap<>();
+//        atts.put("object.detection.x", new Long(rect.x).toString());
+//        atts.put("object.detection.y", new Long(rect.y).toString());
+//        atts.put("object.detection.width", new Long(rect.width).toString());
+//        atts.put("object.detection.height", new Long(rect.height).toString());
+//        atts.put("image.width", new Double(image.size().width).toString());
+//        atts.put("image.height", new Double(image.size().height).toString());
+//
+//        detection = session.putAllAttributes(detection, atts);
+//        session.transfer(detection, REL_OBJECT_DETECTED);
 
     }
 }

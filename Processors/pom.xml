@@ -18,29 +18,29 @@
     <parent>
         <groupId>org.apache.nifi</groupId>
         <artifactId>nifi-nar-bundles</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.1</version>
     </parent>
 
     <properties>
-        <nifi.version>0.5.1</nifi.version>
+        <nifi.version>0.6.1</nifi.version>
     </properties>
 
-    <groupId>com.jeremydyer</groupId>
+    <groupId>com.jeremydyer.nifi</groupId>
     <artifactId>nifi-addons</artifactId>
-    <version>0.5.1</version>
+    <version>0.6.1</version>
     <packaging>pom</packaging>
 
     <modules>
+        <module>nifi-barcode</module>
+        <module>nifi-docker</module>
         <module>nifi-file</module>
-        <module>nifi-salesforce</module>
-        <!--<module>nifi-addon-services</module>-->
-        <module>nifi-tesseract</module>
-        <module>nifi-opencv</module>
-        <module>nifi-spinx</module>
-        <module>nifi-docker-bundle</module>
+        <module>nifi-hive</module>
         <module>nifi-jmx</module>
-    <module>nifi-sepsday</module>
-    <module>nifi-hive</module>
+        <module>nifi-opencv</module>
+        <module>nifi-salesforce</module>
+        <module>nifi-spinx</module>
+        <module>nifi-tesseract</module>
+        <module>nifi-websockets</module>
   </modules>
 
     <dependencyManagement>
@@ -77,7 +77,7 @@
             <dependency>
                 <groupId>org.apache.nifi</groupId>
                 <artifactId>nifi-distributed-cache-protocol</artifactId>
-                <version>0.6.0-SNAPSHOT</version>
+                <version>${nifi.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.nifi</groupId>

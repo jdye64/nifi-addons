@@ -17,14 +17,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.nifi</groupId>
-        <artifactId>nifi-nar-bundles</artifactId>
+        <groupId>com.jeremydyer.nifi</groupId>
+        <artifactId>nifi-addons</artifactId>
         <version>0.6.1</version>
     </parent>
 
     <groupId>com.jeremydyer.nifi</groupId>
-    <artifactId>barcode</artifactId>
-    <version>0.6.1</version>
+    <artifactId>nifi-barcode</artifactId>
     <packaging>pom</packaging>
 
     <modules>
