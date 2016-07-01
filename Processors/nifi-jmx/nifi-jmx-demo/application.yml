@@ -1,0 +1,8 @@
+applicationName: Dropwizard Bootstrap
+
+server:
+  type: simple
+  applicationContextPath: /
+  connector:
+    type: http
+    port: 9000

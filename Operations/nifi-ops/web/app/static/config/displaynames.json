@@ -1,0 +1,68 @@
+{
+    "region": {
+        "AWS": {
+            "us-east-1": "US East(N. Virginia)",
+            "us-west-1": "US West (N. California)",
+            "us-west-2": "US West (Oregon)",
+            "eu-west-1": "EU (Ireland)",
+            "eu-central-1": "EU (Frankfurt)",
+            "ap-southeast-1": "Asia Pacific (Singapore)",
+            "ap-southeast-2": "Asia Pacific (Sydney)",
+            "ap-northeast-1": "Asia Pacific (Tokyo)",
+            "ap-northeast-2": "Asia Pacific (Seoul)",
+            "sa-east-1": "South America (São Paulo)"
+        },
+        "GCP": {
+            "us-central1": "Central US",
+            "europe-west1": "Western Europe",
+            "asia-east1": "East Asia",
+            "us-east1": "Eastern US"
+        }
+    },
+    "disk": {
+        "GCP": {
+            "pd-standard": "Standard persistent disks (HDD)",
+            "pd-ssd": "Solid-state persistent disks (SSD)"
+        },
+        "AWS": {
+            "ephemeral": "Ephemeral",
+            "standard": "Magnetic",
+            "gp2": "General Purpose (SSD)"
+        },
+        "AZURE_RM": {
+            "Standard_LRS": "Locally-redundant storage",
+            "Standard_GRS": "Geo-redundant storage",
+            "Premium_LRS": "Premium locally-redundant storage"
+        }
+    },
+    "credentials" : {
+        "cb-keystone-v2": "v2",
+        "cb-keystone-v3": "v3",
+        "cb-keystone-v3-project-scope": "Project",
+        "cb-keystone-v3-default-scope": "Default",
+        "cb-keystone-v3-domain-scope": "Domain"
+    },
+    "sssd" : {
+        "ACTIVE_DIRECTORY": "Active Directory",
+        "AD": "Active Directory",
+        "NEVER": "Never",
+        "ALLOW": "Allow",
+        "TRY": "Try",
+        "DEMAND": "Demand",
+        "HARD": "Hard"
+    },
+    "recipes" : {
+        "ONE_NODE": "One Node",
+        "ALL_NODES": "All Nodes"
+    },
+    "orchestrators" : {
+      "SWARM": "in docker containers with swarm",
+      "SALT": "on host with salt",
+      "MARATHON": "in docker containers with marathon"
+    },
+    "s3types" : {
+      "NONE": "Disable S3 Access By Default",
+      "CREATE": "Create Role For S3 Access",
+      "USE_EXISTING": "Define Existing Role For S3 Access"
+    }
+}
