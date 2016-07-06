@@ -8,6 +8,10 @@ services:
           - mysql
         ports:
           - "8080:8080"
+        links:
+          - ftp
+          - rabbitmq
+          - mysql
     ftp:
         image: port22/ftp
     rabbitmq:
