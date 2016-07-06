@@ -1,0 +1,8 @@
+version: '2.0'
+services:
+    nifi:
+        image: jdye64/nifi:0.6.1
+        depends_on:
+          - ftp
+    ftp:
+        image: port22/ftp
