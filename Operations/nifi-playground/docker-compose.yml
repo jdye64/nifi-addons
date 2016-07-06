@@ -5,9 +5,12 @@ services:
         depends_on:
           - ftp
           - rabbitmq
+          - mysql
         ports:
           - "8080:8080"
     ftp:
         image: port22/ftp
     rabbitmq:
         image: rabbitmq:3.6.2
+    mysql:
+        image: mysql:5.7.13
