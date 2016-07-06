@@ -4,5 +4,10 @@ services:
         image: jdye64/nifi:0.6.1
         depends_on:
           - ftp
+          - rabbitmq
+        ports:
+          - "8080:8080"
     ftp:
         image: port22/ftp
+    rabbitmq:
+        image: rabbitmq:3.6.2
