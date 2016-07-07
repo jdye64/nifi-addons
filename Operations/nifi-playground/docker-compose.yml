@@ -50,3 +50,6 @@ services:
         image: cassandra:3.7
     hadoop:
         image: jdye64/hdp242
+        hostname: "hadoop.dev"
+        ports:
+          - "9090:8080"
