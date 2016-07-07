@@ -4,17 +4,49 @@ services:
         image: jdye64/nifi:0.6.1
         depends_on:
           - ftp
+          - sftp
           - rabbitmq
           - mysql
+          - activemq
+          - elasticsearch
+          - couchbase
+          - mongodb
+          - solr
+          - cassandra
+          - hadoop
         ports:
           - "8080:8080"
         links:
           - ftp
+          - sftp
           - rabbitmq
           - mysql
+          - activemq
+          - elasticsearch
+          - couchbase
+          - mongodb
+          - solr
+          - cassandra
+          - hadoop
     ftp:
         image: port22/ftp
+    sftp:
+        image: atmoz/sftp
     rabbitmq:
         image: rabbitmq:3.6.2
     mysql:
-        image: mysql:5.7.13
+        image: mysql:5.6
+    activemq:
+        image: webcenter/activemq:latest
+    elasticsearch:
+        image: elasticsearch:5.0
+    couchbase:
+        image: couchbase:4.5.0
+    mongodb:
+        image: mongo:3.3.9
+    solr:
+        image: solr:5.5.2
+    cassandra:
+        image: cassandra:3.7
+    hadoop:
+        image: jdye64/hdp242
