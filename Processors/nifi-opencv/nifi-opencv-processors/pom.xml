@@ -19,7 +19,6 @@
     <parent>
         <groupId>com.jeremydyer</groupId>
         <artifactId>nifi-opencv</artifactId>
-        <version>0.5.1</version>
     </parent>
 
     <artifactId>nifi-opencv-processors</artifactId>
