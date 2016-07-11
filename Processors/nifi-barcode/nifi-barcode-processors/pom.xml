@@ -23,6 +23,7 @@
     </parent>
 
     <artifactId>nifi-barcode-processors</artifactId>
+    <version>0.6.1</version>
     <packaging>jar</packaging>
 
     <dependencies>
