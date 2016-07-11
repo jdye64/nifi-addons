@@ -22,7 +22,7 @@
         <version>0.6.1</version>
     </parent>
 
-    <groupId>com.jeremydyer</groupId>
+    <groupId>com.jeremydyer.nifi</groupId>
     <artifactId>nifi-opencv</artifactId>
     <packaging>pom</packaging>
 

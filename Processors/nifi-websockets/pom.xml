@@ -22,7 +22,7 @@
         <version>0.6.1</version>
     </parent>
 
-    <groupId>org.apache.nifi</groupId>
+    <groupId>com.jeremydyer.nifi</groupId>
     <artifactId>nifi-websockets</artifactId>
     <packaging>pom</packaging>
 

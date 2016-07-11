@@ -17,20 +17,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jeremydyer</groupId>
+        <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-opencv</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.1</version>
     </parent>
 
     <artifactId>nifi-opencv-nar</artifactId>
-    <version>0.5.1</version>
     <packaging>nar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>com.jeremydyer</groupId>
+            <groupId>com.jeremydyer.nifi</groupId>
             <artifactId>nifi-opencv-processors</artifactId>
-            <version>0.5.1</version>
+            <version>0.6.1</version>
         </dependency>
     </dependencies>
 

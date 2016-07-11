@@ -17,9 +17,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jeremydyer</groupId>
-        <artifactId>nifi-docker-bundle</artifactId>
-        <version>0.5.1</version>
+        <groupId>com.jeremydyer.nifi</groupId>
+        <artifactId>nifi-docker</artifactId>
+        <version>0.6.1</version>
     </parent>
 
     <artifactId>nifi-docker-processors</artifactId>

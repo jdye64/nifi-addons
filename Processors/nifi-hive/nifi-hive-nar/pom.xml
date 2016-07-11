@@ -17,9 +17,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jeremydyer</groupId>
+        <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-hive</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.1</version>
     </parent>
 
     <artifactId>nifi-hive-nar</artifactId>
@@ -32,9 +32,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jeremydyer</groupId>
+            <groupId>com.jeremydyer.nifi</groupId>
             <artifactId>nifi-hive-processors</artifactId>
-            <version>0.5.1</version>
+            <version>0.6.1</version>
         </dependency>
     </dependencies>
 
