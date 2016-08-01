@@ -40,6 +40,7 @@
         <module>nifi-salesforce</module>
         <module>nifi-spinx</module>
         <module>nifi-ocr</module>
+        <module>nifi-tesseract</module>
         <module>nifi-websockets</module>
   </modules>
 
