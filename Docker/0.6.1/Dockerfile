@@ -27,10 +27,6 @@ RUN unzip 3.1.0.zip
 RUN cd opencv-3.1.0 && mkdir build && cd build && cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=OFF .. && make -j8
 
 # Since we can't use Docker to get outside of the Docker build context AKA ../../Processors. Lets just pull things down from GitHub
-RUN echo hello
-RUN echo somethingelse
-RUN echo somethingelse2
-RUN echo somethingelse3
 RUN git clone https://github.com/jdye64/nifi-addons.git
 
 # Compiles all of the NiFi addon custom processors
