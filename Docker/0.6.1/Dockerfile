@@ -36,7 +36,6 @@ RUN cd /nifi-addons/Processors && mvn clean install package -DskipTests
 RUN mv /nifi-addons/Processors/nifi-barcode/nifi-barcode-nar/target/*.nar $NIFI_HOME/lib/.
 RUN mv /nifi-addons/Processors/nifi-docker/nifi-docker-nar/target/*.nar $NIFI_HOME/lib/.
 RUN mv /nifi-addons/Processors/nifi-file/nifi-file-nar/target/*.nar $NIFI_HOME/lib/.
-RUN mv /nifi-addons/Processors/nifi-hive/nifi-hive-nar/target/*.nar $NIFI_HOME/lib/.
 RUN mv /nifi-addons/Processors/nifi-jmx/nifi-jmx-nar/target/*.nar $NIFI_HOME/lib/.
 RUN mv /nifi-addons/Processors/nifi-ocr/nifi-ocr-nar/target/*.nar $NIFI_HOME/lib/.
 RUN mv /nifi-addons/Processors/nifi-opencv/nifi-opencv-nar/target/*.nar $NIFI_HOME/lib/.
