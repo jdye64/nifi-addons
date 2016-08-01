@@ -34,7 +34,7 @@
         <module>nifi-barcode</module>
         <module>nifi-docker</module>
         <module>nifi-file</module>
-        <module>nifi-hive</module>
+        <!--module>nifi-hive</module --> <!-- Removed because this isn't quite primetime ready yet -->
         <module>nifi-jmx</module>
         <module>nifi-opencv</module>
         <module>nifi-salesforce</module>
