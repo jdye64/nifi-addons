@@ -15,9 +15,8 @@ ultimate data in motion tool focus has (wisely) be centered around creating proc
   
 ## Versioning
 This projects versioning will attempt to align with Apache NiFi as closely as possible. The idea will be that each new
-release of Apache NiFi will correlate to a new branch/tag within this project. Subsequently a new Docker image will be created
-containing the version format of ```jdye64/nifi-addons:{NIFI_VERSION}-{ADDONS_BUILD_VERSION}```. ```jdye64/nifi-addons:{NIFI_VERSION}-latest``` 
-can be used to pull the latest nifi-addons build for a particular version of NiFi. 
+release of Apache NiFi will correlate to a new branch/tag/release within this project. Subsequently a new Docker image will be created
+containing the version format of ```jdye64/nifi-addons:{ADDONS_BUILD_VERSION}```. 
   
 ## Docker
 In an effort to make using these NiFi addons as easy as possible this project can be ran as a Docker container. Since the
@@ -27,8 +26,5 @@ commands below.
 
 | NiFi Version        | HDF Version           | Docker Command  |
 | :-------------: |:-------------:| :-----:|
-| 0.5.1 | HDF 1.1 | ```docker run -d -p 8080:8080 jdye64/nifi-addons:0.5.1-latest``` |
-
-## Dev Notes
-
-```~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/bin/nifi.sh stop && mvn clean install package && cp ./nifi-file/nifi-file-nar/target/nifi-file-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-salesforce/nifi-salesforce-nar/target/nifi-salesforce-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-addon-services/nifi-salesforce-service/nifi-salesforce.service-api-nar/target/nifi-salesforce.service-api-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && cp ./nifi-addon-services/nifi-salesforce-service/nifi-salesforce.service-nar/target/nifi-salesforce.service-nar-0.5.1.nar ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/lib/. && ~/Desktop/nifi/HDF/nifi-0.5.1.1.1.2.0-32/bin/nifi.sh start```
+| 0.6.1 | HDF 1.2 | ```docker run -d -p 8080:8080 jdye64/nifi-addons:0.6.1``` |
+| 0.7.0 | NA      | ```docker run -d -p 8080:8080 jdye64/nifi-addons:0.7.0``` |
