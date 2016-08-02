@@ -19,11 +19,11 @@
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-barcode</artifactId>
-        <version>0.6.1</version>
+        <version>${nifi.version}</version>
     </parent>
 
     <artifactId>nifi-barcode-processors</artifactId>
-    <version>0.6.1</version>
+    <version>${nifi.version}</version>
     <packaging>jar</packaging>
 
     <dependencies>

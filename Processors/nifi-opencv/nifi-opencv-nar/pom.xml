@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-opencv</artifactId>
-        <version>0.6.1</version>
+        <version>${nifi.version}</version>
     </parent>
 
     <artifactId>nifi-opencv-nar</artifactId>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.jeremydyer.nifi</groupId>
             <artifactId>nifi-opencv-processors</artifactId>
-            <version>0.6.1</version>
+            <version>${nifi.version}</version>
         </dependency>
     </dependencies>
 

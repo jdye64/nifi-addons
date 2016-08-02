@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-spinx</artifactId>
-        <version>0.6.1</version>
+        <version>${nifi.version}</version>
     </parent>
 
     <artifactId>nifi-spinx-nar</artifactId>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.jeremydyer.nifi</groupId>
             <artifactId>nifi-spinx-processors</artifactId>
-            <version>0.6.1</version>
+            <version>${nifi.version}</version>
         </dependency>
     </dependencies>
 

@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-jmx</artifactId>
-        <version>0.6.1</version>
+        <version>${nifi.version}</version>
     </parent>
 
     <artifactId>nifi-jmx-nar</artifactId>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.jeremydyer.nifi</groupId>
             <artifactId>nifi-jmx-processors</artifactId>
-            <version>0.6.1</version>
+            <version>${nifi.version}</version>
         </dependency>
     </dependencies>
 
