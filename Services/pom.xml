@@ -14,16 +14,18 @@
   limitations under the License.
 --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.jeremydyer</groupId>
-        <artifactId>nifi-addons</artifactId>
-        <version>0.5.1</version>
-    </parent>
 
+    <properties>
+        <nifi.version>0.7.0</nifi.version>
+    </properties>
+
+    <groupId>com.jeremydyer.nifi</groupId>
     <artifactId>nifi-addon-services</artifactId>
+    <version>${nifi.version}</version>
     <packaging>pom</packaging>
-    <modules>
-        <module>nifi-salesforce-service</module>
-        <module>nifi-oauth-service</module>
+    
+
+  <modules>
+    <module>nifi-salesforce-service</module>
   </modules>
 </project>
