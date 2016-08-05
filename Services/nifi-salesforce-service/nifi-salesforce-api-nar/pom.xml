@@ -17,21 +17,30 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.nifi</groupId>
-        <artifactId>nifi-nar-bundles</artifactId>
+        <groupId>com.jeremydyer.nifi</groupId>
+        <artifactId>nifi-salesforce-service</artifactId>
         <version>0.7.0</version>
     </parent>
 
-    <groupId>com.jeremydyer.nifi</groupId>
-    <artifactId>nifi-salesforce-service</artifactId>
+    <artifactId>nifi-salesforce-api-nar</artifactId>
     <version>0.7.0</version>
-    <packaging>pom</packaging>
+    <packaging>nar</packaging>
+    <properties>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+        <source.skip>true</source.skip>
+    </properties>
 
-    <modules>
-        <module>nifi-salesforce-api</module>
-        <module>nifi-salesforce-api-nar</module>
-        <module>nifi-salesforce</module>
-        <module>nifi-salesforce-nar</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-standard-services-api-nar</artifactId>
+            <type>nar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jeremydyer.nifi</groupId>
+            <artifactId>nifi-salesforce-api</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
