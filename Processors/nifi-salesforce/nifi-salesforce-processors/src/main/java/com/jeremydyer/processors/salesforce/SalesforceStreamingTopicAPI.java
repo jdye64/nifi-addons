@@ -1,34 +1,51 @@
 package com.jeremydyer.processors.salesforce;
 
-import org.apache.nifi.annotation.behavior.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import org.apache.nifi.annotation.behavior.InputRequirement;
+import org.apache.nifi.annotation.behavior.ReadsAttribute;
+import org.apache.nifi.annotation.behavior.ReadsAttributes;
+import org.apache.nifi.annotation.behavior.TriggerWhenEmpty;
+import org.apache.nifi.annotation.behavior.WritesAttribute;
+import org.apache.nifi.annotation.behavior.WritesAttributes;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
-import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.flowfile.FlowFile;
-import org.apache.nifi.processor.*;
+import org.apache.nifi.processor.AbstractProcessor;
+import org.apache.nifi.processor.ProcessContext;
+import org.apache.nifi.processor.ProcessSession;
+import org.apache.nifi.processor.ProcessorInitializationContext;
+import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.exception.ProcessException;
 import org.apache.nifi.processor.io.OutputStreamCallback;
 import org.apache.nifi.processor.util.StandardValidators;
-import org.cometd.bayeux.Message;
-import org.cometd.bayeux.client.ClientSessionChannel;
 import org.cometd.client.BayeuxClient;
 import org.cometd.client.transport.ClientTransport;
 import org.cometd.client.transport.LongPollingTransport;
 import org.eclipse.jetty.client.ContentExchange;
 import org.eclipse.jetty.client.HttpClient;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
-import javax.net.ssl.*;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.security.cert.X509Certificate;
-import java.util.*;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 
 @Tags({"salesforce", "streaming", "api", "PushTopic", "channel"})
@@ -44,7 +61,6 @@ public class SalesforceStreamingTopicAPI
     public static final PropertyDescriptor SF_CLIENT_ID = new PropertyDescriptor
             .Builder().name("Salesforce Client_Id")
             .description("The Salesforce ClientId used to perform the OAuth login")
-            .defaultValue("3MVG9RHx1QGZ7OsgCq9CAYIb89iGjlOTn41p5QOFHR6N3l6NBQPQ9bZj2G0ij453L.MUGFSla3mAiYj7BCpiA")
             .required(true)
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
@@ -52,7 +68,6 @@ public class SalesforceStreamingTopicAPI
     public static final PropertyDescriptor SF_CLIENT_SECRET = new PropertyDescriptor
             .Builder().name("Salesforce Client_Secret")
             .description("The Salesforce ClientSecret used to perform the OAuth login")
-            .defaultValue("7164985079946323147")
             .required(true)
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
@@ -60,7 +75,6 @@ public class SalesforceStreamingTopicAPI
     public static final PropertyDescriptor SF_USERNAME = new PropertyDescriptor
             .Builder().name("Salesforce Username")
             .description("The Salesforce username used to perform Salesforce.com login")
-            .defaultValue("jdyer@hortonworks.com")
             .required(true)
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
@@ -68,7 +82,6 @@ public class SalesforceStreamingTopicAPI
     public static final PropertyDescriptor SF_PASSWORD = new PropertyDescriptor
             .Builder().name("Salesforce Password")
             .description("The Salesforce password used to perform Salesforce.com login")
-            .defaultValue("Rascal18")
             .required(true)
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
