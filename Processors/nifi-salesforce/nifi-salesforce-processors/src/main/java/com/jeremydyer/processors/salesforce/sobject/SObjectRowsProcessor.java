@@ -1,3 +1,20 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.jeremydyer.processors.salesforce.sobject;
 
 import java.io.IOException;
@@ -8,6 +25,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.nifi.annotation.documentation.CapabilityDescription;
+import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.ProcessContext;
@@ -21,9 +40,9 @@ import org.apache.nifi.processor.util.StandardValidators;
 import com.jeremydyer.nifi.salesforce.SalesforceUserPassAuthentication;
 import com.jeremydyer.processors.salesforce.base.AbstractSalesforceRESTOperation;
 
-/**
- * Created by jdyer on 8/5/16.
- */
+@Tags({"salesforce", "rows", "sobject"})
+@CapabilityDescription("Accesses records based on the specified object ID. Retrieves, updates, or deletes records. This resource can also be used to " +
+        "retrieve field values. Use the GET method to retrieve records or fields")
 public class SObjectRowsProcessor
         extends AbstractSalesforceRESTOperation {
 
