@@ -16,7 +16,7 @@ Once all of the nars have been built you can start NiFi as you normally would an
 The below chart lists the processors contained in this project and their capability. Each processor has a dependency on the ```SalesforceUserPassAuthenticationService``` Controller service which maintains the authentication for the processors to the Salesforce.com REST API.
 
 | Salesforce Processor Name | Purpose | Salesforce Documentation Link |
-| :-------------: |:-------------:| :-------------:|
+| :-------: |:--------------------:| :-------------:|
 | DescribeGlobalProcessor | Lists all SObject availale in the context of the current Salesforce.com authentication session context. | https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_describeGlobal.htm
 | SalesforceOrganizationLimitsProcessor | Lists information about limits in your organization. This resource is available in REST API version 29.0 and later for API users with the "View Setup and Configuration" permission. The resource returns these limits: | https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_limits.htm
 | SalesforceQueryProcessor | Executes the specified SOQL query | https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_query.htm
