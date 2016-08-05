@@ -15,3 +15,11 @@
 com.jeremydyer.processors.salesforce.GenerateSOQL
 com.jeremydyer.processors.salesforce.GeneratePhoenixCreateTable
 com.jeremydyer.processors.salesforce.SalesforceStreamingTopicAPI
+com.jeremydyer.processors.salesforce.organization.SalesforceOrganizationLimitsProcessor
+com.jeremydyer.processors.salesforce.sobject.SObjectDescribeProcessor
+com.jeremydyer.processors.salesforce.sobject.DescribeGlobalProcessor
+com.jeremydyer.processors.salesforce.sobject.SObjectBasicInfoProcessor
+com.jeremydyer.processors.salesforce.sobject.SObjectGetDeletedProcessor
+com.jeremydyer.processors.salesforce.sobject.SObjectGetUpdatedProcessor
+com.jeremydyer.processors.salesforce.sobject.SObjectRowsProcessor
+com.jeremydyer.processors.salesforce.query.SalesforceQueryProcessor
