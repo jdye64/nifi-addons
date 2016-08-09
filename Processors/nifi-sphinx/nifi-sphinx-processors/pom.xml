@@ -18,11 +18,11 @@
 
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
-        <artifactId>nifi-spinx</artifactId>
+        <artifactId>nifi-sphinx</artifactId>
         <version>${nifi.version}</version>
     </parent>
 
-    <artifactId>nifi-spinx-processors</artifactId>
+    <artifactId>nifi-sphinx-processors</artifactId>
     <packaging>jar</packaging>
 
     <repositories>

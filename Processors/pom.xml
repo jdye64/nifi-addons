@@ -38,7 +38,7 @@
         <module>nifi-jmx</module>
         <module>nifi-opencv</module>
         <module>nifi-salesforce</module>
-        <module>nifi-spinx</module>
+        <module>nifi-sphinx</module>
         <module>nifi-ocr</module>
         <module>nifi-tesseract</module>
         <module>nifi-websockets</module>

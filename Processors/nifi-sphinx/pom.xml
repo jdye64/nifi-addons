@@ -23,12 +23,12 @@
     </parent>
 
     <groupId>com.jeremydyer.nifi</groupId>
-    <artifactId>nifi-spinx</artifactId>
+    <artifactId>nifi-sphinx</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>nifi-spinx-processors</module>
-        <module>nifi-spinx-nar</module>
+        <module>nifi-sphinx-processors</module>
+        <module>nifi-sphinx-nar</module>
     </modules>
 
 </project>
