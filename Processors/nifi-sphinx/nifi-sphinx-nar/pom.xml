@@ -22,7 +22,7 @@
         <version>${nifi.version}</version>
     </parent>
 
-    <artifactId>nifi-spinx-nar</artifactId>
+    <artifactId>nifi-sphinx-nar</artifactId>
     <packaging>nar</packaging>
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -32,7 +32,7 @@
     <dependencies>
         <dependency>
             <groupId>com.jeremydyer.nifi</groupId>
-            <artifactId>nifi-spinx-processors</artifactId>
+            <artifactId>nifi-sphinx-processors</artifactId>
             <version>${nifi.version}</version>
         </dependency>
     </dependencies>
