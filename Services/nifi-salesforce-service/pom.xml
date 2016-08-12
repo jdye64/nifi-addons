@@ -30,8 +30,8 @@
     <modules>
         <module>nifi-salesforce-api</module>
         <module>nifi-salesforce-api-nar</module>
-        <module>nifi-salesforce</module>
-        <module>nifi-salesforce-nar</module>
+        <module>nifi-salesforce-controllerservice</module>
+        <module>nifi-salesforce-controllerservice-nar</module>
     </modules>
 
 </project>

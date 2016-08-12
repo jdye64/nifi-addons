@@ -95,15 +95,6 @@ public class SalesforceUserPassAuthenticationService
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
 
-    public static final PropertyDescriptor USER_SECURITY_TOKEN = new PropertyDescriptor
-            .Builder().name("Salesforce.com User's security token for the specified connected application")
-            .description("End-user's security token")
-            .required(true)
-            .defaultValue("1KGLFBJGntyiPaCOQsUFcX9w")
-            .expressionLanguageSupported(true)
-            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
-            .build();
-
     private static final List<PropertyDescriptor> properties;
 
     static {
@@ -113,7 +104,6 @@ public class SalesforceUserPassAuthenticationService
         props.add(CLIENT_SECRET);
         props.add(USERNAME);
         props.add(PASSWORD);
-        props.add(USER_SECURITY_TOKEN);
         properties = Collections.unmodifiableList(props);
     }
 
@@ -148,7 +138,7 @@ public class SalesforceUserPassAuthenticationService
 
         requestBody.append("&password=");
         requestBody.append(context.getProperty(PASSWORD).evaluateAttributeExpressions().getValue());
-        requestBody.append(context.getProperty(USER_SECURITY_TOKEN).evaluateAttributeExpressions().getValue());
+        //requestBody.append(context.getProperty(USER_SECURITY_TOKEN).evaluateAttributeExpressions().getValue());
 
 
         try {

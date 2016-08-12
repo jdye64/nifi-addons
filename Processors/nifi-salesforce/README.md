@@ -5,6 +5,9 @@ The goal of this project is to provide a flexible integration point with Salesfo
 
 Since Salesforce operates on units they refer to as "SObjects" that naming convention will be present in most of these processors as well. The first pass at this project will focus mostly on pulling SObjects from Salesforce.com. As the project progresses the plan is to add things like updating objects, deleting objects, and streaming realtime Salesforce.com changes into the NiFi instance for downstream analysis.
 
+## Salesforce.com Required Setup
+In order to use these processors administrators much first ensure that their Salesforce.com accounts are properly setup to allow access to this project. The first step is to create a connected application. Instructions for setting up a connected application can be found at https://help.salesforce.com/apex/HTViewHelpDoc?id=connected_app_create.htm
+
 ## Installation
 ```nifi-salesforce``` has a runtime and compile time dependency on the ```nifi-salesforce-service```. The ```nifi-salesforce-service``` must first be compiled and present in your local Maven repository before this project will even compile successfully. ```nifi-salesforce-service``` can be located at https://github.com/jdye64/nifi-addons/tree/master/Services/nifi-salesforce-service and can be compiled and placed in your local Maven repository by running ```mvn clean install package -DskipTests```. After ```nifi-salesforce-service``` has successfully compiled you will want to place the resulting ```NIFI-ADDONS-HOME/Services/nifi-salesforce-service/nifi-salesforce-api-nar/target/nifi-salesforce-api-nar-0.7.0.nar``` into your ```NIFI_HOME/lib``` directory of the NiFi instance you plan to run this service on. Currently this project has only been validated against Apache NiFi 0.7.0.
 
