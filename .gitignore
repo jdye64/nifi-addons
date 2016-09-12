@@ -4,3 +4,4 @@ target
 /nifi-opencv/target
 /**/*.iml
 /**/target
+.DS_Store
