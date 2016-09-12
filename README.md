@@ -28,3 +28,5 @@ commands below.
 | :-------------: |:-------------:| :-----:|
 | 0.6.1 | HDF 1.2 | ```docker run -d -p 8080:8080 jdye64/nifi-addons:0.6.1``` |
 | 0.7.0 | NA      | ```docker run -d -p 8080:8080 jdye64/nifi-addons:0.7.0``` |
+| 1.0.0-Beta | NA | ```docker run -d -p 8080:8080 jdye64/nifi-addons:1.0.0-beta``` |
+| 1.0.0 | NA | ```docker run -d -p 8080:8080 jdye64/nifi-addons:1.0.0``` |

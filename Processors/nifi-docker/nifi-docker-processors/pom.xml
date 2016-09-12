@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-docker</artifactId>
-        <version>${nifi.version}</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>nifi-docker-processors</artifactId>

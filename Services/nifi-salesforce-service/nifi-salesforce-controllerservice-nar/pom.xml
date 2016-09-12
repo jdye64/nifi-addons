@@ -19,11 +19,11 @@
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
         <artifactId>nifi-salesforce-service</artifactId>
-        <version>0.7.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>nifi-salesforce-controllerservice-nar</artifactId>
-    <version>0.7.0</version>
+    <version>1.0.0</version>
     <packaging>nar</packaging>
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>

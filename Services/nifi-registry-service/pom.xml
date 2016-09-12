@@ -18,17 +18,20 @@
 
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
-        <artifactId>nifi-addons</artifactId>
-        <version>${nifi.version}</version>
+        <artifactId>nifi-addon-services</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     <groupId>com.jeremydyer.nifi</groupId>
-    <artifactId>nifi-hive</artifactId>
+    <artifactId>nifi-registry-service</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>nifi-hive-processors</module>
-        <module>nifi-hive-nar</module>
+        <module>nifi-registry-api</module>
+        <module>nifi-registry-api-nar</module>
+        <module>nifi-registry</module>
+        <module>nifi-registry-nar</module>
     </modules>
 
 </project>

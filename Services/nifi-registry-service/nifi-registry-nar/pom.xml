@@ -18,12 +18,12 @@
 
     <parent>
         <groupId>com.jeremydyer.nifi</groupId>
-        <artifactId>nifi-hive</artifactId>
-        <version>${nifi.version}</version>
+        <artifactId>nifi-registry-service</artifactId>
+        <version>1.0.0</version>
     </parent>
 
-    <artifactId>nifi-hive-nar</artifactId>
-    <version>${nifi.version}</version>
+    <artifactId>nifi-registry-nar</artifactId>
+    <version>1.0.0</version>
     <packaging>nar</packaging>
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -33,7 +33,13 @@
     <dependencies>
         <dependency>
             <groupId>com.jeremydyer.nifi</groupId>
-            <artifactId>nifi-hive-processors</artifactId>
+            <artifactId>nifi-registry-api-nar</artifactId>
+            <version>${nifi.version}</version>
+            <type>nar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jeremydyer.nifi</groupId>
+            <artifactId>nifi-registry</artifactId>
             <version>${nifi.version}</version>
         </dependency>
     </dependencies>
