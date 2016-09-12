@@ -1,4 +1,4 @@
-FROM jdye64/docker-hwx:nifi-1.0.0-BETA
+FROM jdye64/docker-hwx:nifi-1.0.0
 
 ENV LD_LIBRARY_PATH = $LD_LIBRARY_PATH:/opencv-3.1.0/build/lib/
 

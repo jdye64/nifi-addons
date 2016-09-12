@@ -1,10 +1,7 @@
 #!/bin/bash
 SLEEP_SEC="20"
 NIFI_PORT="8080"
-NIFI_IMAGE_NAME="jdye64/nifi-addons:1.0.0-BETA"
-
-DOCKER_MACHINE_NAME=env | grep docker | grep DOCKER_MACHINE_NAME | cut -f2 -d'='
-echo "Current Docker Machine '$DOCKER_MACHINE_NAME'"
+NIFI_IMAGE_NAME="jdye64/nifi-addons:1.0.0"
 
 # Checks for an instance of $NIFI_IMAGE_NAME already running
 CONTAINER_ID=$(docker ps | grep $NIFI_IMAGE_NAME | awk '{ print $1 }')
@@ -23,7 +20,7 @@ fi
 echo "Launching latest NiFi instance"
 CONTAINER_ID=$(docker run -t -d -p $NIFI_PORT:$NIFI_PORT $NIFI_IMAGE_NAME)
 
-IP_ADDR=$(docker-machine inspect $DOCKER_MACHINE_NAME | grep IPAddress | cut -f2 -d':' | cut -f2 -d'"')
+IP_ADDR="127.0.0.1"
 echo "IPAddress: $IP_ADDR"
 NIFI_URL="http://$IP_ADDR:$NIFI_PORT/nifi"
 echo "Opening NiFi WebUI at $NIFI_URL"
