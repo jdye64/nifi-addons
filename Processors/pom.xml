@@ -42,6 +42,7 @@
         <module>nifi-ocr</module>
         <module>nifi-tesseract</module>
         <module>nifi-websockets</module>
+        <module>nifi-google-cloud</module>
   </modules>
 
     <dependencyManagement>
