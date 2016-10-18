@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.jeremydyer.nifi</groupId>
             <artifactId>nifi-file-processors</artifactId>
-            <version>${nifi.version}</version>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

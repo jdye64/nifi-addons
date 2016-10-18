@@ -16,6 +16,8 @@
  */
 package com.jeremydyer.processors.file;
 
+import java.io.File;
+
 import org.apache.nifi.util.TestRunner;
 import org.apache.nifi.util.TestRunners;
 import org.junit.Before;
@@ -28,12 +30,17 @@ public class MyProcessorTest {
 
     @Before
     public void init() {
-        testRunner = TestRunners.newTestRunner(DeleteFile.class);
+        testRunner = TestRunners.newTestRunner(ZipEntryReader.class);
     }
 
     @Test
-    public void testProcessor() {
+    public void testInvalidSelector() throws Exception {
+        testRunner.setProperty(ZipEntryReader.OCCURRENCE, "3");
+        testRunner.setProperty(ZipEntryReader.REGEX, "^(\\d{4}_\\d{2}_\\d{2}).*");
+        testRunner.setProperty(ZipEntryReader.REGEX_GROUP_SUPPORT, "true");
 
+        testRunner.enqueue(new File("src/test/resources/Archive.zip").toPath());
+        testRunner.run();
     }
 
 }
