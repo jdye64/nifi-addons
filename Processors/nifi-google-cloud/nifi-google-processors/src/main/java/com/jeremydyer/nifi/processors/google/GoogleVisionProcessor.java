@@ -316,7 +316,7 @@ public class GoogleVisionProcessor
     public static Vision getVisionService(ProcessContext context) throws IOException, GeneralSecurityException {
         GoogleCredential credential =
                 GoogleCredential.getApplicationDefault().createScoped(VisionScopes.all());
-        
+
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
 
         return new Vision.Builder(GoogleNetHttpTransport.newTrustedTransport(), jsonFactory, credential)

@@ -62,9 +62,9 @@ import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
 import com.google.common.collect.ImmutableList;
 
-@Tags({"Google", "Vision", "face detection", "landmark detection", "ocr"})
+@Tags({"Google", "Speech", "speech to text"})
 @CapabilityDescription("Provide a description")
-@SeeAlso({})
+@SeeAlso({GoogleVisionProcessor.class})
 @ReadsAttributes({@ReadsAttribute(attribute="", description="")})
 @WritesAttributes({@WritesAttribute(attribute="", description="")})
 public class GoogleSpeechProcessor extends AbstractProcessor {
