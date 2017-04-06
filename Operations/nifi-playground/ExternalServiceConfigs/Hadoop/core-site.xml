@@ -2,7 +2,7 @@
     
     <property>
       <name>fs.defaultFS</name>
-      <value>hdfs://hadoop.dev:8020</value>
+      <value>hdfs://hadoop:8020</value>
     </property>
     
     <property>
@@ -27,7 +27,7 @@
     
     <property>
       <name>hadoop.proxyuser.hcat.hosts</name>
-      <value>hadoop.dev</value>
+      <value>hadoop</value>
     </property>
     
     <property>
@@ -47,7 +47,7 @@
     
     <property>
       <name>hadoop.proxyuser.hive.hosts</name>
-      <value>hadoop.dev</value>
+      <value>hadoop</value>
     </property>
     
     <property>

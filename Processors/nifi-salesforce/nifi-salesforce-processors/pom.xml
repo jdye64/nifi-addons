@@ -17,13 +17,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jeremydyer.nifi</groupId>
+        <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-salesforce</artifactId>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
     </parent>
 
     <artifactId>nifi-salesforce-processors</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -33,9 +33,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jeremydyer.nifi</groupId>
+            <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-salesforce-api</artifactId>
-            <version>1.0.0</version>
+            <version>${nifi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

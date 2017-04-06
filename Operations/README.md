@@ -1,0 +1,4 @@
+Operations within the NiFi framework is a broad subject. I have removed the existing efforts here in favor of a completely new project called "nifi-device-registry"
+which will capture all devices within a given ecosystem as well as operational metrics for them such as back pressured connections, processors that are invalid,
+ cpu usage, memory, disk space, etc. This effort will run as an external microservice with NiFi ReportingTasks sending the information to the device registry
+ where it will display the operational metrics to the end user through a single pane of glass. That effort can be found at https://github.com/jdye64/nifi-device-registry

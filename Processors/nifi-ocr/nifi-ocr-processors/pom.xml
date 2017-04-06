@@ -17,9 +17,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jeremydyer.nifi</groupId>
+        <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-ocr</artifactId>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
     </parent>
 
     <artifactId>nifi-ocr-processors</artifactId>

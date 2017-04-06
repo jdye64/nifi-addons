@@ -192,12 +192,12 @@
     
     <property>
       <name>dfs.namenode.http-address</name>
-      <value>hadoop.dev:50070</value>
+      <value>hadoop:50070</value>
     </property>
     
     <property>
       <name>dfs.namenode.https-address</name>
-      <value>hadoop.dev:50470</value>
+      <value>hadoop:50470</value>
     </property>
     
     <property>
@@ -212,7 +212,7 @@
     
     <property>
       <name>dfs.namenode.rpc-address</name>
-      <value>hadoop.dev:8020</value>
+      <value>hadoop:8020</value>
     </property>
     
     <property>
@@ -222,7 +222,7 @@
     
     <property>
       <name>dfs.namenode.secondary.http-address</name>
-      <value>hadoop.dev:50090</value>
+      <value>hadoop:50090</value>
     </property>
     
     <property>

@@ -2,6 +2,9 @@ version: '2.0'
 services:
     nifi:
         image: jdye64/nifi:0.6.1
+        # This is stupid! Make sure to use an environment variable substiution when your not in a rush!
+        volumes:
+          - /Users/jdyer/Development/github/nifi-addons/Operations/nifi-playground/ExternalServiceConfigs:/etc/conf
         depends_on:
           - ftp
           - sftp
@@ -49,7 +52,7 @@ services:
     cassandra:
         image: cassandra:3.7
     hadoop:
-        image: jdye64/hdp242
+        image: jdye64/hdp242:nifi_playground
         hostname: "hadoop.dev"
         ports:
           - "9090:8080"

@@ -1,8 +1,0 @@
-include 'auth'
-include 'cloud-api'
-include 'core-model'
-include 'core'
-include 'web'
-
-rootProject.name = 'basin'
-

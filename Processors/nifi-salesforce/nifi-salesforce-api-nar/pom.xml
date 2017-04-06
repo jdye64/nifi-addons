@@ -18,18 +18,23 @@
 
     <parent>
         <groupId>com.github.jdye64</groupId>
-        <artifactId>nifi-opencv</artifactId>
+        <artifactId>nifi-salesforce</artifactId>
         <version>1.1.2</version>
     </parent>
 
-    <artifactId>nifi-opencv-nar</artifactId>
+    <artifactId>nifi-salesforce-api-nar</artifactId>
     <packaging>nar</packaging>
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-standard-services-api-nar</artifactId>
+            <type>nar</type>
+        </dependency>
+        <dependency>
             <groupId>com.github.jdye64</groupId>
-            <artifactId>nifi-opencv-processors</artifactId>
-            <version>${nifi.version}</version>
+            <artifactId>nifi-salesforce-api</artifactId>
+            <version>1.1.2</version>
         </dependency>
     </dependencies>
 

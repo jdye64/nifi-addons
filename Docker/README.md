@@ -1,0 +1,1 @@
+Thankfully making NiFi Docker images has been picked up by the community! You can find and use those images https://github.com/apache/nifi/tree/master/nifi-docker
