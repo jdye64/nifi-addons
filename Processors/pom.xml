@@ -42,6 +42,7 @@
         <module>nifi-tesseract</module>
         <module>nifi-google-cloud</module>
         <module>nifi-tensorflow</module>
+        <module>nifi-image</module>
   </modules>
 
     <dependencyManagement>
