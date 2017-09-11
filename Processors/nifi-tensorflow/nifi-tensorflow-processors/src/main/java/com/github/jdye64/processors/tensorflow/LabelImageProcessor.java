@@ -81,6 +81,26 @@ public class LabelImageProcessor
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
 
+    public static final PropertyDescriptor TF_FEED_NODE = new PropertyDescriptor
+            .Builder().name("tensorflow-feed-node")
+            .displayName("TensorFlow input/feed node")
+            .description("Node name in the Tensorflow graph where the incoming image bytes will be feed into the graph")
+            .expressionLanguageSupported(true)
+            .defaultValue("ExpandDims")
+            .required(true)
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
+
+    public static final PropertyDescriptor TF_OUTPUT_NODE = new PropertyDescriptor
+            .Builder().name("tensorflow-output-node")
+            .displayName("TensorFlow output node")
+            .description("Node name in the Tensorflow graph where the result from the label detection will be retrieved")
+            .expressionLanguageSupported(true)
+            .defaultValue("final_result:0")
+            .required(true)
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
+
     public static final Relationship REL_SUCCESS = new Relationship.Builder().name("success")
             .description("successfully labeled image").build();
 
@@ -96,6 +116,8 @@ public class LabelImageProcessor
         final List<PropertyDescriptor> descriptors = new ArrayList<PropertyDescriptor>();
         descriptors.add(TF_FROZEN_GRAPH);
         descriptors.add(TF_LABELS_FILE);
+        descriptors.add(TF_FEED_NODE);
+        descriptors.add(TF_OUTPUT_NODE);
         this.descriptors = Collections.unmodifiableList(descriptors);
 
         final Set<Relationship> relationships = new HashSet<Relationship>();
@@ -148,7 +170,10 @@ public class LabelImageProcessor
                     byte[] imageBytes = IOUtils.toByteArray(inputStream);
 
                     try (Tensor image = constructAndExecuteGraphToNormalizeImage(imageBytes)) {
-                        float[] labelProbabilities = executeInceptionGraph(graphDef, image);
+                        String feedNodeName = context.getProperty(TF_FEED_NODE).evaluateAttributeExpressions().getValue();
+                        String outputNodeName = context.getProperty(TF_OUTPUT_NODE).evaluateAttributeExpressions().getValue();
+
+                        float[] labelProbabilities = executeInceptionGraph(graphDef, image, feedNodeName, outputNodeName);
                         int bestLabelIdx = maxIndex(labelProbabilities);
                         String output = String.format("BEST MATCH: %s (%.2f%% likely)", labels.get(bestLabelIdx), labelProbabilities[bestLabelIdx] * 100f);
                         outputStream.write(output.getBytes());
@@ -227,12 +252,11 @@ public class LabelImageProcessor
         }
     }
 
-    private float[] executeInceptionGraph(byte[] graphDef, Tensor image) {
+    private float[] executeInceptionGraph(byte[] graphDef, Tensor image, String feedNodeName, String outputNodeName) {
         try (Graph g = new Graph()) {
             g.importGraphDef(graphDef);
             try (Session s = new Session(g)) {
-                
-                Tensor result = s.runner().fetch("final_result:0").run().get(0);
+                Tensor result = s.runner().feed(feedNodeName, image).fetch(outputNodeName).run().get(0);
                 final long[] rshape = result.shape();
                 if (result.numDimensions() != 2 || rshape[0] != 1) {
                     throw new RuntimeException(
