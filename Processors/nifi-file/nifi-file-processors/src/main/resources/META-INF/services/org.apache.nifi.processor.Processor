@@ -16,3 +16,5 @@ com.jeremydyer.processors.file.DeleteFile
 com.jeremydyer.processors.file.PutContent
 com.jeremydyer.processors.file.ZipEntryReader
 com.jeremydyer.processors.file.IsDirectoryEmptyProcessor
+com.jeremydyer.processors.file.FlowFileDelayProcessor
+com.jeremydyer.processors.file.EmptyDirectoryProcessor
