@@ -106,12 +106,16 @@ public class FlowFileDelayProcessor
     @Override
     public void onTrigger(ProcessContext context, ProcessSession session) throws ProcessException {
         FlowFile ff = session.get();
+        if (ff == null) {
+            return;
+        }
 
         String delay = ff.getAttribute(TIME_ATTRIBUTE);
         if (delay == null) {
             // This is the first time that the file has entered this processor so we need to create and place
             // the initial timestamp in the flowfile's attributes.
             ff = session.putAttribute(ff, TIME_ATTRIBUTE, String.valueOf(System.currentTimeMillis()));
+            ff = session.penalize(ff);
             session.transfer(ff, REL_DELAY);
         } else {
             Long delayTimestamp = new Long(delay);
@@ -119,6 +123,7 @@ public class FlowFileDelayProcessor
                     > context.getProperty(DELAY_TIME_MS).evaluateAttributeExpressions().asLong()) {
                 session.transfer(ff, REL_READY);
             } else {
+                ff = session.penalize(ff);
                 session.transfer(ff, REL_DELAY);
             }
         }
