@@ -1,4 +1,0 @@
-# Apache NiFi Playground
-
-## Motivation
-Apache NiFi is a powerful tool that can wear many hats. Not only is it powerful but also very easy to install and use. However being so powerful comes at a cost. Since Apache NiFi is capable of integrating with so many systems and protocols the bottleneck often becomes the availability of those services. This project aims to provide a Dockerized environment that encorporates *all* (with exception of 3 rd party services like Amazon S3) into a simple environment that is drop simple to run. Better yet this environment can become very handy by making smoke testing around Apache releases much easier since when used in conjunction with another one of my projects "nifi-shell" can automate tests across multiple integration points and performance testing. 
