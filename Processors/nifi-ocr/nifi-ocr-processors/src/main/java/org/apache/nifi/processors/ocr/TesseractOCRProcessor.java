@@ -86,7 +86,7 @@ public class TesseractOCRProcessor extends AbstractProcessor {
         SUPPORTED_LANGUAGES.add("eng"); //Since this is the default value we need to ensure it is present in the allowableValues.
 
         //NOTE: this works with the latest version of NiFi but changed to work with older NiFi 0.6.1
-//        PAGE_SEGMENTATION_MODES = new ArrayList<>();
+//        PAGE_SEGMENTATION_MODES = new ArrayList<AllowableValue>();
 //        PAGE_SEGMENTATION_MODES.add(new AllowableValue("0","0 = Orientation and script detection (OSD) only"));
 //        PAGE_SEGMENTATION_MODES.add(new AllowableValue("1","1 = Automatic page segmentation with OSD"));
 //        PAGE_SEGMENTATION_MODES.add(new AllowableValue("2","2 = Automatic page segmentation, but no OSD, or OCR"));
@@ -228,12 +228,12 @@ public class TesseractOCRProcessor extends AbstractProcessor {
         List<PropertyDescriptor> descriptorsNew = new ArrayList<>();
 
         descriptorsNew.add(TESS_DATA_PATH);
+        descriptorsNew.add(TESSERACT_PAGE_SEG_MODE);
+        descriptorsNew.add(TESSERACT_CONFIGS);
         descriptorsNew.add(new PropertyDescriptor.Builder()
                 .fromPropertyDescriptor(TESSERACT_LANGUAGE)
                 .allowableValues(SUPPORTED_LANGUAGES)
                 .build());
-        descriptorsNew.add(TESSERACT_PAGE_SEG_MODE);
-        descriptorsNew.add(TESSERACT_CONFIGS);
 
         return descriptorsNew;
     }
@@ -271,6 +271,7 @@ public class TesseractOCRProcessor extends AbstractProcessor {
         tesseract.setLanguage(context.getProperty(TESSERACT_LANGUAGE).getValue());
         //tesseract.setPageSegMode((context.getProperty(TESSERACT_PAGE_SEG_MODE).asInteger()));
         tesseract.setPageSegMode(3);
+        //tesseract.setPageSegMode(7); this works for the powermeter but not cat in the hat
     }
 
 
@@ -342,7 +343,7 @@ public class TesseractOCRProcessor extends AbstractProcessor {
             String[] keyValuePairs = StringUtils.split(commaDelimitedConfigs, ",");
             if (keyValuePairs != null && keyValuePairs.length > 0) {
                 for (String kp : keyValuePairs) {
-                    String[] keyValue = StringUtils.split(kp);
+                    String[] keyValue = StringUtils.split(kp, "=");
                     configs.put(keyValue[0], keyValue[1]);
                 }
             }

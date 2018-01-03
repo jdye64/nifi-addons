@@ -24,7 +24,7 @@
 
     <groupId>com.github.jdye64</groupId>
     <artifactId>nifi-tensorflow</artifactId>
-    <version>1.4.0-SNAPSHOT</version>
+    <version>1.4.0</version>
     <packaging>pom</packaging>
 
     <modules>
