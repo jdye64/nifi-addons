@@ -19,26 +19,31 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-google-cloud</artifactId>
-        <version>1.4.0</version>
+        <version>1.5.0</version>
     </parent>
 
     <artifactId>nifi-google-processors</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.auth</groupId>
-            <artifactId>google-auth-library-oauth2-http</artifactId>
-            <version>0.9.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud</artifactId>
-            <version>0.32.0-alpha</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.google.auth</groupId>-->
+            <!--<artifactId>google-auth-library-oauth2-http</artifactId>-->
+            <!--<version>0.9.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.google.cloud</groupId>-->
+            <!--<artifactId>google-cloud</artifactId>-->
+            <!--<version>0.32.0-alpha</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-core</artifactId>
+            <version>1.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-core-grpc</artifactId>
             <version>1.14.0</version>
         </dependency>
         <dependency>
@@ -47,10 +52,20 @@
             <version>1.14.0</version>
         </dependency>
         <dependency>
-            <groupId>com.google.apis</groupId>
-            <artifactId>google-api-services-vision</artifactId>
-            <version>v1-rev24-1.22.0</version>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-vision</artifactId>
+            <version>1.14.0</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.google.guava</groupId>-->
+            <!--<artifactId>guava</artifactId>-->
+            <!--<version>23.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.google.apis</groupId>-->
+            <!--<artifactId>google-api-services-vision</artifactId>-->
+            <!--<version>v1-rev24-1.22.0</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-speech</artifactId>
