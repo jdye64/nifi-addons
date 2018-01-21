@@ -37,6 +37,7 @@ import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.logging.ComponentLog;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractProcessor;
 import org.apache.nifi.processor.ProcessContext;
@@ -129,12 +130,12 @@ public class GoogleSpeechProcessor
 
     @Override
     public void onTrigger(final ProcessContext context, final ProcessSession session) throws ProcessException {
-
+    		final ComponentLog logger = getLogger();
         FlowFile flowFile = session.get();
         if ( flowFile == null ) {
             return;
         }
-
+        
         try {
 
             final AtomicReference<List<SpeechRecognitionResult>> speechResults = new AtomicReference<>();
@@ -149,12 +150,12 @@ public class GoogleSpeechProcessor
                     RecognitionConfig config = RecognitionConfig.newBuilder()
                             .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
                             .setLanguageCode("en-US")
-                            .setSampleRateHertz(16000)
+                            .setSampleRateHertz(8000)
                             .build();
                     RecognitionAudio audio = RecognitionAudio.newBuilder()
                             .setContent(audioBytes)
                             .build();
-
+                    
                     // Use blocking call to get audio transcript
                     RecognizeResponse response = speechClient.recognize(config, audio);
                     speechResults.set(response.getResultsList());
@@ -162,23 +163,30 @@ public class GoogleSpeechProcessor
             });
 
             if (speechResults.get().size() > 0) {
+            		ArrayList<byte[]> results = new ArrayList<byte[]>();
                 for (final SpeechRecognitionResult result : speechResults.get()) {
                     final SpeechRecognitionAlternative alternative = result.getAlternatives(0);
-                    FlowFile ff = session.write(session.create(), new OutputStreamCallback() {
-                        @Override
-                        public void process(OutputStream outputStream) throws IOException {
-                            outputStream.write(alternative.getTranscript().getBytes());
-                        }
-                    });
-
+                    
+                    results.add(alternative.getTranscript().getBytes());
+                    logger.info(result.toString());
                     // Updates the attributes based on the response from Google.
-                    session.putAttribute(ff, "google.speech.confidence", String.valueOf(alternative.getConfidence()));
-                    session.putAttribute(ff, "google.speech.serialized.size", String.valueOf(alternative.getSerializedSize()));
-                    session.putAttribute(ff, "google.speech.words.count", String.valueOf(alternative.getWordsCount()));
-
-                    session.transfer(ff, REL_SUCCESS);
-                    session.transfer(flowFile, REL_ORIGINAL);
+                    //session.putAttribute(ff, "google.speech.confidence", String.valueOf(alternative.getConfidence()));
+                    //session.putAttribute(ff, "google.speech.serialized.size", String.valueOf(alternative.getSerializedSize()));
+                    //session.putAttribute(ff, "google.speech.words.count", String.valueOf(alternative.getWordsCount()));
+                    logger.info(alternative.getTranscript().toString());
+                    
                 }
+                
+                FlowFile ff = session.write(session.create(), new OutputStreamCallback() {
+                    @Override
+                    public void process(OutputStream outputStream) throws IOException {
+                    		for (byte[] result : results)
+                        outputStream.write(result);
+                    }
+                });
+                ff = session.putAllAttributes(ff, flowFile.getAttributes());
+                session.transfer(ff, REL_SUCCESS);
+                session.transfer(flowFile, REL_ORIGINAL);
             } else {
                 // No results were found ....
                 session.transfer(flowFile, REL_NO_RESULTS);
