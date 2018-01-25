@@ -55,6 +55,7 @@ import com.google.cloud.speech.v1.LongRunningRecognizeMetadata;
 import com.google.cloud.speech.v1.LongRunningRecognizeResponse;
 import com.google.cloud.speech.v1.RecognitionAudio;
 import com.google.cloud.speech.v1.RecognitionConfig;
+import com.google.cloud.speech.v1.RecognizeRequest;
 import com.google.cloud.speech.v1.RecognizeResponse;
 import com.google.cloud.speech.v1.SpeechClient;
 import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
@@ -69,32 +70,45 @@ import com.google.protobuf.ByteString;
 public class GoogleSpeechProcessor
 extends AbstractProcessor {
 
-	public static final PropertyDescriptor MY_PROPERTY = new PropertyDescriptor
-			.Builder().name("My Property")
-			.description("Example Property")
+	public static final PropertyDescriptor PROP_IS_DATA_FROM_FLOWFILE = new PropertyDescriptor
+		.Builder().name("Data From FlowFile")
+		.description("If true, data source will be the FlowFile content itself. "
+			+ "If false, FlowFile content will be interpreted as a "
+			+ "Google Cloud Storage URI (gs://)")
+		.required(true)
+		.addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+		.defaultValue("true")
+		.allowableValues("true", "false")
+		.build();
+	
+	public static final PropertyDescriptor PROP_SAMPLE_RATE = new PropertyDescriptor
+			.Builder().name("Sample Rate")
+			.description("The sample rate which will be used in the recognition request to Google")
 			.required(true)
 			.addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+			.defaultValue("8000")
+			.allowableValues("8000", "16000")
 			.build();
 
 	public static final Relationship REL_SUCCESS = new Relationship.Builder()
-			.name("success")
-			.description("Example relationship")
-			.build();
+		.name("success")
+		.description("Example relationship")
+		.build();
 
 	public static final Relationship REL_ORIGINAL = new Relationship.Builder()
-			.name("original")
-			.description("Original input flowfile")
-			.build();
+		.name("original")
+		.description("Original input flowfile")
+		.build();
 
 	public static final Relationship REL_NO_RESULTS = new Relationship.Builder()
-			.name("no results")
-			.description("No speech to text results were returned from the Google API")
-			.build();
+		.name("no results")
+		.description("No speech to text results were returned from the Google API")
+		.build();
 
 	public static final Relationship REL_ERROR = new Relationship.Builder()
-			.name("error")
-			.description("There was an error")
-			.build();
+		.name("error")
+		.description("There was an error")
+		.build();
 
 	private List<PropertyDescriptor> descriptors;
 	private Set<Relationship> relationships;
@@ -103,7 +117,8 @@ extends AbstractProcessor {
 	@Override
 	protected void init(final ProcessorInitializationContext context) {
 		final List<PropertyDescriptor> descriptors = new ArrayList<>();
-		descriptors.add(MY_PROPERTY);
+		descriptors.add(PROP_IS_DATA_FROM_FLOWFILE);
+		descriptors.add(PROP_SAMPLE_RATE);
 		this.descriptors = Collections.unmodifiableList(descriptors);
 
 		final Set<Relationship> relationships = new HashSet<>();
@@ -152,23 +167,31 @@ extends AbstractProcessor {
 		session.read(flowFile, new InputStreamCallback() {
 			@Override
 			public void process(InputStream inputStream) throws IOException {
-				byte[] data = IOUtils.toByteArray(inputStream);
-				ByteString audioBytes = ByteString.copyFrom(data);
 
 				// Configure request with local raw PCM audio
 				RecognitionConfig config = RecognitionConfig.newBuilder()
 						.setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
 						.setLanguageCode("en-US")
-						.setSampleRateHertz(8000)
+						.setSampleRateHertz(context.getProperty(PROP_SAMPLE_RATE).asInteger())
 						.build();
-				RecognitionAudio audio = RecognitionAudio.newBuilder()
-						.setContent(audioBytes)
+				RecognitionAudio audio;
+				if (context.getProperty(PROP_IS_DATA_FROM_FLOWFILE).asBoolean())
+				{
+					byte[] data = IOUtils.toByteArray(inputStream);
+					ByteString audioSource = ByteString.copyFrom(data);
+					audio = RecognitionAudio.newBuilder()
+						.setContent(audioSource)
 						.build();
+				} else {
+					String data = IOUtils.toString(inputStream, "UTF-8");
+					audio = RecognitionAudio.newBuilder()
+						.setUri(data)
+						.build();
+				}
 
 				try {
-					// Use blocking call to get audio transcript
-					RecognizeResponse response = speechClient.recognize(config, audio);
-					speechResults.set(response.getResultsList());
+					OperationFuture<LongRunningRecognizeResponse, LongRunningRecognizeMetadata> response = speechClient.longRunningRecognizeAsync(config, audio);
+					speechResults.set(response.get().getResultsList());
 				} catch (NoSuchMethodError | Exception e) {
 					logger.error("Encountered an error");
 					isError.set(true);
