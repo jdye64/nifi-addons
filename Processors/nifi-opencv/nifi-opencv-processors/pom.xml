@@ -53,7 +53,7 @@
         <dependency>
             <groupId>com.jeremydyer</groupId>
             <artifactId>opencv-binding</artifactId>
-            <version>3.1.0</version>
+            <version>3.4.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
