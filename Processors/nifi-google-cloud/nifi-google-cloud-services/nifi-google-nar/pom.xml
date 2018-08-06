@@ -19,11 +19,11 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-google-cloud-services</artifactId>
-        <version>1.5.0</version>
+        <version>1.7.1</version>
     </parent>
 
     <artifactId>nifi-google-services-nar</artifactId>
-    <version>1.5.0</version>
+    <version>1.7.1</version>
     <packaging>nar</packaging>
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -34,13 +34,13 @@
         <dependency>
             <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-google-api-nar</artifactId>
-            <version>1.5.0</version>
+            <version>1.7.1</version>
             <type>nar</type>
         </dependency>
         <dependency>
             <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-google</artifactId>
-            <version>1.5.0</version>
+            <version>1.7.1</version>
         </dependency>
     </dependencies>
 

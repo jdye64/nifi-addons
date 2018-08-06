@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-salesforce</artifactId>
-        <version>1.5.0</version>
+        <version>1.7.1</version>
     </parent>
 
     <artifactId>nifi-salesforce-controllerservice-nar</artifactId>
@@ -29,13 +29,13 @@
         <dependency>
             <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-salesforce-api-nar</artifactId>
-            <version>1.5.0</version>
+            <version>1.7.1</version>
             <type>nar</type>
         </dependency>
         <dependency>
             <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-salesforce-controllerservice</artifactId>
-            <version>1.5.0</version>
+            <version>1.7.1</version>
         </dependency>
     </dependencies>
 
