@@ -17,19 +17,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.jdye64</groupId>
-        <artifactId>nifi-addon-processors</artifactId>
+        <groupId>org.apache.nifi</groupId>
+        <artifactId>nifi-nar-bundles</artifactId>
         <version>1.9.1</version>
     </parent>
 
     <groupId>com.github.jdye64</groupId>
+    <artifactId>nifi-mock</artifactId>
     <version>1.9.1</version>
-    <artifactId>nifi-docker</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>nifi-docker-processors</module>
-        <module>nifi-docker-nar</module>
+        <module>nifi-mock-processors</module>
+        <module>nifi-mock-nar</module>
     </modules>
 
 </project>

@@ -18,18 +18,24 @@
 
     <parent>
         <groupId>com.github.jdye64</groupId>
-        <artifactId>nifi-addon-processors</artifactId>
+        <artifactId>nifi-mock</artifactId>
         <version>1.9.1</version>
     </parent>
 
-    <groupId>com.github.jdye64</groupId>
+    <artifactId>nifi-mock-nar</artifactId>
     <version>1.9.1</version>
-    <artifactId>nifi-docker</artifactId>
-    <packaging>pom</packaging>
+    <packaging>nar</packaging>
+    <properties>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+        <source.skip>true</source.skip>
+    </properties>
 
-    <modules>
-        <module>nifi-docker-processors</module>
-        <module>nifi-docker-nar</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.jdye64</groupId>
+            <artifactId>nifi-mock-processors</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -18,18 +18,40 @@
 
     <parent>
         <groupId>com.github.jdye64</groupId>
-        <artifactId>nifi-addon-processors</artifactId>
+        <artifactId>nifi-mock</artifactId>
         <version>1.9.1</version>
     </parent>
 
-    <groupId>com.github.jdye64</groupId>
+    <artifactId>nifi-mock-processors</artifactId>
     <version>1.9.1</version>
-    <artifactId>nifi-docker</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <modules>
-        <module>nifi-docker-processors</module>
-        <module>nifi-docker-nar</module>
-    </modules>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-api</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-utils</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-mock</artifactId>
+            <version>1.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

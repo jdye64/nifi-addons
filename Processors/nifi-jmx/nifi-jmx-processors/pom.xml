@@ -19,10 +19,11 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-jmx</artifactId>
-        <version>1.5.0</version>
+        <version>1.9.1</version>
     </parent>
 
     <artifactId>nifi-jmx-processors</artifactId>
+    <version>1.9.1</version>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -34,14 +35,17 @@
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-api</artifactId>
+            <version>1.9.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-processor-utils</artifactId>
+            <version>1.9.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-mock</artifactId>
+            <version>1.9.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
