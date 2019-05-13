@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-salesforce</artifactId>
-        <version>1.9.1</version>
+        <version>1.9.2</version>
     </parent>
 
     <artifactId>nifi-salesforce-controllerservice</artifactId>
@@ -34,18 +34,18 @@
         <dependency>
             <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-salesforce-api</artifactId>
-            <version>1.9.1</version>
+            <version>1.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-api</artifactId>
-            <version>1.9.1</version>
+            <version>1.9.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-processor-utils</artifactId>
-            <version>1.9.1</version>
+            <version>1.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>

@@ -19,18 +19,18 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-google-cloud</artifactId>
-        <version>1.9.1</version>
+        <version>1.9.2</version>
     </parent>
 
     <artifactId>nifi-google-nar</artifactId>
-    <version>1.9.1</version>
+    <version>1.9.2</version>
     <packaging>nar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-google-processors</artifactId>
-            <version>1.9.1</version>
+            <version>1.9.2</version>
         </dependency>
     </dependencies>
 

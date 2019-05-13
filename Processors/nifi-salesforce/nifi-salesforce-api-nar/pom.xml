@@ -19,24 +19,24 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-salesforce</artifactId>
-        <version>1.9.1</version>
+        <version>1.9.2</version>
     </parent>
 
     <artifactId>nifi-salesforce-api-nar</artifactId>
-    <version>1.9.1</version>
+    <version>1.9.2</version>
     <packaging>nar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-standard-services-api-nar</artifactId>
-            <version>1.9.1</version>
+            <version>1.9.2</version>
             <type>nar</type>
         </dependency>
         <dependency>
             <groupId>com.github.jdye64</groupId>
             <artifactId>nifi-salesforce-api</artifactId>
-            <version>1.9.1</version>
+            <version>1.9.2</version>
         </dependency>
     </dependencies>
 

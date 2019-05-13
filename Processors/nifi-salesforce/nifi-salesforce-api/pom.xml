@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-salesforce</artifactId>
-        <version>1.9.1</version>
+        <version>1.9.2</version>
     </parent>
 
     <artifactId>nifi-salesforce-api</artifactId>

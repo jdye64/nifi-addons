@@ -19,11 +19,11 @@
     <parent>
         <groupId>com.github.jdye64</groupId>
         <artifactId>nifi-jmx</artifactId>
-        <version>1.9.1</version>
+        <version>1.9.2</version>
     </parent>
 
     <artifactId>nifi-jmx-nar</artifactId>
-    <version>1.9.1</version>
+    <version>1.9.2</version>
     <packaging>nar</packaging>
 
     <dependencies>
