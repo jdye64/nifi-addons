@@ -1,7 +1,7 @@
 .idea
-target
 .iml
-/nifi-opencv/target
 /**/*.iml
 /**/target
+/**/.project
+/**/.settings
 .DS_Store
